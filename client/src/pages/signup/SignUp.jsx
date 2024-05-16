@@ -3,7 +3,7 @@ import React from 'react'
 import GenderCheckbox from './GenderCheckbox'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import  useSignup  from '../../hooks/useSignup' // Adjust the path as necessary
+import useSignup from '../../hooks/useSignup' // Adjust the path as necessary
 const SignUp = () => {
   const [inputs, setInputs] = useState({
     fullName: '',
@@ -66,6 +66,8 @@ const SignUp = () => {
               type='password'
               placeholder='Confirm Password'
               className='w-full input input-bordered h-10'
+              value={inputs.confirmPassword}
+              onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
             />
           </div>
 
@@ -76,7 +78,7 @@ const SignUp = () => {
           </Link>
 
           <div>
-            <button className='btn btn-block btn-sm mt-2 border border-slate-700'>Sign Up</button>
+            <button className='btn btn-block btn-sm mt-2 border border-slate-700' disabled={loading}>{loading ? <span className='loading loading-spinner'></span> : 'Sign Up'}</button>
           </div>
         </form>
       </div>
